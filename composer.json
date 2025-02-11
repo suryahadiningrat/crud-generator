@@ -1,0 +1,33 @@
+{
+    "name": "suryahadiningrat/crud-generator",
+    "description": "CRUD Generator for laravel included Controller, Model, Request, Repository, Resource",
+    "type": "laravel-package",
+    "require": {
+        "illuminate/support": "*",
+        "illuminate/console": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "*",
+        "phpunit/phpunit": "*"
+    },
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Suryahadiningrat\\CrudGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "suryahadiningrat",
+            "email": "rifkysuryakusumarachmat@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+        "extra": {
+        "laravel": {
+            "providers": [
+                "Suryahadiningrat\\CrudGenerator\\CrudGeneratorServiceProvider"
+            ]
+        }
+    }
+}
