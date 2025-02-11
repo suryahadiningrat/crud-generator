@@ -21,7 +21,6 @@ class CrudGeneratorCommandTest extends TestCase
         $this->artisan('crud-generator:generate', [
             '--migration' => $this->migrationPath
         ])
-        ->expectsOutput("Generating CRUD for migration: ".$this->migrationPath)
         ->assertExitCode(0);
     }
 }

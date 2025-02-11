@@ -27,19 +27,28 @@ class CRUDGeneratorCommand extends Command
      * Running command.
      */
     public function handle()
-    {
-        
+    {   
+        // Check --migration value
         $migrationPath = $this->option('migration');
-
         if (!$migrationPath) return $this->returnError("The --migration option is required.");
 
+        // Running CRUD generate
         $response = CRUDGenerator::generate($migrationPath);
+        if ($message = CheckResponse::isError($response)) return $this->returnError($message);
+        
+        return $this->returnSuccess(@$response['message']);
+    }
 
-        if ($message = CheckResponse::isError($response, $this)) return $this->returnError($message);
-
-        $this->info('CRUD generation completed successfully!');
+    /**
+     * return success commands
+     * 
+     * @param string $message
+     */
+    private function returnSuccess(string $message) {
+        $this->info($message);
         return 0;
     }
+
 
     /**
      * return error commands

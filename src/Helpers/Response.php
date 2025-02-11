@@ -5,7 +5,7 @@ namespace Suryahadiningrat\CrudGenerator\Helpers;
 class Response
 {
     /**
-     * Creating response
+     * Creating response error
      *
      * @param string $message
      * @return array
@@ -14,6 +14,20 @@ class Response
     {
         return [
             'status' => 'error',
+            'message' => $message
+        ];
+    }
+
+    /**
+     * Creating response success
+     *
+     * @param string $message
+     * @return array
+     */
+    public static function createSuccess(string $message)
+    {
+        return [
+            'status' => 'success',
             'message' => $message
         ];
     }

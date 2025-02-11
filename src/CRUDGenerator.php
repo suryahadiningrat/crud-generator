@@ -18,6 +18,6 @@ class CRUDGenerator {
         $content = ReadMigrations::readFile($migrationPath);
         if (!$content) return Response::createError("File $migrationPath not found");
 
-        
+        return Response::createSuccess("Sucess Generate CRUD from migration $migrationPath");
     }
 }
