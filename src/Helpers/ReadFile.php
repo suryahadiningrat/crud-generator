@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 class ReadFile
 {
     /**
-     * Reading content of file migrations.
+     * Reading content of file.
      *
      * @param string $filePath
      * @return string|false

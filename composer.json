@@ -4,7 +4,8 @@
     "type": "laravel-package",
     "require": {
         "illuminate/support": "*",
-        "illuminate/console": "*"
+        "illuminate/console": "*",
+        "symfony/filesystem": "5.4.x-dev"
     },
     "require-dev": {
         "orchestra/testbench": "*",
