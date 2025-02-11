@@ -9,12 +9,10 @@ class Example extends Model
     /**
      * @var string
      */
-    protected $table = 'examples';
+    protected $table = 'example';
 
     /**
      * @var array
      */
-    protected $fillable = [
-        'id', 'total'
-    ];
+    protected $fillable = ['name'];
 }
