@@ -15,7 +15,7 @@ class MigrationToModel
     {
         // Extract table name
         preg_match("/Schema::create\('([^']+)'/", $migrationContent, $tableMatches);
-        $tableName = $tableMatches[1] ?? 'default_table';
+        $tableName = $tableMatches[1] ?? false;
 
         // Extract columns
         preg_match_all("/->(string|integer|float|boolean|date|timestamp)\('([^']+)'\)/", $migrationContent, $columnMatches);
@@ -25,9 +25,17 @@ class MigrationToModel
         $modelName = self::convertTableNameToModelName($tableName);
         $fillableColumns = implode("', '", $columns);
 
-        $isUsingSoftDelete = false;
+        // Checking is migrations file contains modelName, tableName, and FillableColumns
+        if (!$modelName) return ["Migration not contains a model name"];
+        if (!$tableName) return ["Migration not contains a table name"];
+        if (!$fillableColumns) return ["Migration not contains fillable columns"];
 
-        return self::generateModelContent($modelName, $tableName, $fillableColumns, $isUsingSoftDelete);
+        preg_match("/->softDeletes\(\)/", $migrationContent, $isUsingSoftDelete);
+
+        return [
+            'name' => $modelName.".php",
+            'content' => self::generateModelContent($modelName, $tableName, $fillableColumns, $isUsingSoftDelete)
+        ];
     }
 
     /**
