@@ -4,7 +4,7 @@ namespace Suryahadiningrat\CrudGenerator\Helpers;
 
 use Illuminate\Support\Facades\File;
 
-class ReadMigrations
+class ReadFile
 {
     /**
      * Reading content of file migrations.
@@ -12,7 +12,7 @@ class ReadMigrations
      * @param string $filePath
      * @return string|false
      */
-    public static function readFile($filePath)
+    public static function read($filePath)
     {
         try {
             return File::get($filePath);

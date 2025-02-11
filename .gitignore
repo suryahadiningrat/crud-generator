@@ -2,4 +2,4 @@
 /.phpunit.result.cache
 /composer.lock
 /test.php
-/tests/stubs
+/tests/stubs/tests

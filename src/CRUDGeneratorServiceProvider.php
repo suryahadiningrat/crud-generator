@@ -12,6 +12,10 @@ class CRUDGeneratorServiceProvider extends ServiceProvider {
         $this->publishes([
             __DIR__ . '/Console/CRUDGeneratorCommand.php' => base_path('app/Console/Commands/CRUDGeneratorCommand.php'),
         ], 'commands');
+
+        $this->publishes([
+            __DIR__ . '/Config/crud-generator.php' => config_path('crud-generator.php'),
+        ], 'crud-generator-config');
     }
     
     public function register()
@@ -21,5 +25,10 @@ class CRUDGeneratorServiceProvider extends ServiceProvider {
                 CRUDGeneratorCommand::class,
             ]);
         }
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/Config/crud-generator.php',
+            'crud-generator'
+        );
     }
 }
