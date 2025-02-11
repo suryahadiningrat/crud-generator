@@ -8,7 +8,8 @@
     },
     "require-dev": {
         "orchestra/testbench": "*",
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "*",
+        "larapack/dd": "dev-master"
     },
     "license": "mit",
     "autoload": {

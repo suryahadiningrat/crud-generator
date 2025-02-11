@@ -4,7 +4,8 @@ namespace Suryahadiningrat\CrudGenerator\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Suryahadiningrat\CrudGenerator\Helpers\ReadMigrations;
+use Suryahadiningrat\CrudGenerator\CRUDGenerator;
+use Suryahadiningrat\CrudGenerator\Helpers\CheckResponse;
 
 class CRUDGeneratorCommand extends Command
 {
@@ -35,15 +36,11 @@ class CRUDGeneratorCommand extends Command
             return 1;
         }
 
-        $content = ReadMigrations::readFile($migrationPath);
+        $response = CRUDGenerator::generate($migrationPath);
 
-        if ($content === false) {
-            $this->error("Failed to read the migration file at: $migrationPath");
+        if ($message = CheckResponse::isError($response))
+            $this->error($message);
             return 1;
-        }
-
-        $this->info("Generating CRUD for migration: $migrationPath");
-        $this->line($content);
 
         $this->info('CRUD generation completed successfully!');
         return 0;
