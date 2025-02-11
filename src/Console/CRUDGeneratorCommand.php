@@ -31,18 +31,23 @@ class CRUDGeneratorCommand extends Command
         
         $migrationPath = $this->option('migration');
 
-        if (!$migrationPath) {
-            $this->error('The --migration option is required.');
-            return 1;
-        }
+        if (!$migrationPath) return $this->returnError("The --migration option is required.");
 
         $response = CRUDGenerator::generate($migrationPath);
 
-        if ($message = CheckResponse::isError($response))
-            $this->error($message);
-            return 1;
+        if ($message = CheckResponse::isError($response, $this)) return $this->returnError($message);
 
         $this->info('CRUD generation completed successfully!');
         return 0;
+    }
+
+    /**
+     * return error commands
+     * 
+     * @param string $message
+     */
+    private function returnError(string $message) {
+        $this->error($message);
+        return 1;
     }
 }
