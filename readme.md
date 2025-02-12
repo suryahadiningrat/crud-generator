@@ -14,6 +14,7 @@
 If the library is published on Packagist, you can install it using:
 ```bash
 composer require suryahadiningrat/crud-generator
+```
 
 ## Documentation
 
@@ -21,8 +22,10 @@ composer require suryahadiningrat/crud-generator
 Publishing configuration using:
 ```bash
 php artisan vendor:publish --tag=crud-generator-config
+```
 
 ### 2. Running CRUD Generator
 Run the CRUD Generator with:
 ```bash
 php artisan crud-generator:generate --migration=CHANGE_WITH_YOUR_MIGRATION_RELATIVE_PATH
+```
