@@ -8,6 +8,7 @@ class CrudGeneratorCommandTest extends TestCase
 {
     private $migrationPath = __DIR__ . '/stubs/example_migration.php';
     private $wrongMigrationPath = __DIR__ . '/stubs/example_migration.sphp';
+    private $migrationPathWithSoftDelete = __DIR__ . '/stubs/example_migration_soft_delete.php';
 
     protected function getPackageProviders($app)
     {
@@ -21,6 +22,15 @@ class CrudGeneratorCommandTest extends TestCase
     {
         $this->artisan('crud-generator:generate', [
             '--migration' => $this->migrationPath
+        ])
+        ->assertExitCode(0);
+    }
+
+    /** @test */
+    public function it_can_run_the_crud_generator_command_with_soft_delete_migration()
+    {
+        $this->artisan('crud-generator:generate', [
+            '--migration' => $this->migrationPathWithSoftDelete
         ])
         ->assertExitCode(0);
     }
