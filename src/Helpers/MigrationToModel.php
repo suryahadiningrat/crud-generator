@@ -9,7 +9,7 @@ class MigrationToModel
      * Convert a Laravel migration file to a model string.
      *
      * @param string $migrationContent content of the migration file
-     * @return string|null The generated model as a string, or null if the conversion fails
+     * @return string|array The generated model as a array, or string if the conversion fails
      */
     public static function convertMigrationToModel(string $migrationContent)
     {
@@ -26,14 +26,15 @@ class MigrationToModel
         $fillableColumns = implode("', '", $columns);
 
         // Checking is migrations file contains modelName, tableName, and FillableColumns
-        if (!$modelName) return ["Migration not contains a model name"];
-        if (!$tableName) return ["Migration not contains a table name"];
-        if (!$fillableColumns) return ["Migration not contains fillable columns"];
+        if (!$modelName) return "Migration not contains a model name";
+        if (!$tableName) return "Migration not contains a table name";
+        if (!$fillableColumns) return "Migration not contains fillable columns";
 
         preg_match("/->softDeletes\(\)/", $migrationContent, $isUsingSoftDelete);
 
         return [
-            'name' => $modelName.".php",
+            'name' => $modelName,
+            'fileName' => "$modelName.php",
             'content' => self::generateModelContent($modelName, $tableName, $fillableColumns, $isUsingSoftDelete)
         ];
     }
