@@ -18,7 +18,7 @@ class MigrationToModel
         $tableName = $tableMatches[1] ?? false;
 
         // Extract columns
-        preg_match_all("/->(string|integer|float|boolean|date|timestamp)\('([^']+)'\)/", $migrationContent, $columnMatches);
+        preg_match_all("/->(id|bigIncrements|string|integer|float|boolean|date|timestamp|timestamps)\('([^']+)'\)/", $migrationContent, $columnMatches);
         $columns = $columnMatches[2] ?? [];
 
         // Generate the model content
