@@ -9,6 +9,13 @@ class CRUDGeneratorServiceProvider extends ServiceProvider {
     
     public function boot()
     {
+        if (!function_exists('config_path')) {
+            function config_path($path = '')
+            {
+                return base_path('config') . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+            }
+        }
+
         $this->publishes([
             __DIR__ . '/Console/CRUDGeneratorCommand.php' => base_path('app/Console/Commands/CRUDGeneratorCommand.php'),
         ], 'commands');

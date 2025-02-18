@@ -38,7 +38,7 @@ class GenerateController
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\\'.$modelName.'Request;
+use App\Http\Requests\\'.$modelName.'StoreRequest;
 use App\Http\Requests\\'.$modelName.'UpdateRequest;
 
 use App\Http\Resources\\'.$modelName.'Resource;
@@ -59,7 +59,7 @@ class '.$modelName.'Controller extends CRUDController
         return $this->indexRequestHandler($this->'.$modelName.'Resource);
     }
 
-    public function store('.$modelName.'Request $request) 
+    public function store('.$modelName.'StoreRequest $request) 
     {
         return $this->storeRequestHandler($request, $this->'.$modelName.'Resource);
     }
