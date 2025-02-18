@@ -18,10 +18,10 @@ composer require suryahadiningrat/crud-generator
 
 ## Documentation
 
-### 1. Publish Config
-Publishing configuration using:
+### 1. Register service provider
+Register service provider in boostrap/app.php:
 ```bash
-php artisan vendor:publish --tag=crud-generator-config
+$app->register(\Suryahadiningrat\CrudGenerator\CrudGeneratorServiceProvider::class);
 ```
 
 ### 2. Running CRUD Generator
