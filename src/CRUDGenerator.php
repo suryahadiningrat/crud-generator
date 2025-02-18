@@ -52,9 +52,12 @@ class CRUDGenerator {
             WriteFile::write($requestPath, $value['fileName'], $value['content']);
         }
 
+        // Generating resource
+        $resourceContent = MigrationToResource::convertMigrationToResource($migrationContent);
+        WriteFile::write($resourcePath, $resourceContent['fileName'], $resourceContent['content']);
+
         // Adding endpoint in routing
         $writingRoute = WriteRoute::writeRoutes($modelContent['name'], $routePath);
-        dd($writingRoute);
 
         return Response::createSuccess("Sucess Generate CRUD from migration $migrationPath");
     }
