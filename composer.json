@@ -5,12 +5,13 @@
     "require": {
         "illuminate/support": "*",
         "illuminate/console": "*",
-        "symfony/filesystem": "5.4.x-dev"
+        "illuminate/routing": "*",
+        "symfony/filesystem": "*"
     },
     "require-dev": {
         "orchestra/testbench": "*",
         "phpunit/phpunit": "*",
-        "larapack/dd": "dev-master"
+        "larapack/dd": "*"
     },
     "license": "mit",
     "autoload": {
