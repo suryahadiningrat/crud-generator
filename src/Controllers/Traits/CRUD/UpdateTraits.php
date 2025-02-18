@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Traits\CRUD;
+namespace Suryahadiningrat\CrudGenerator\Controllers\Traits\CRUD;
 
 use Illuminate\Http\Request;
 use Suryahadiningrat\CrudGenerator\Helpers\CustomResponse;
