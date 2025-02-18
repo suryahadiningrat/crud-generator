@@ -16,7 +16,7 @@ If the library is published on Packagist, you can install it using:
 composer require suryahadiningrat/crud-generator
 ```
 
-## How to use
+## Usage
 
 ### 1. Register service provider
 Register service provider in boostrap/app.php:
