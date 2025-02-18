@@ -2,7 +2,11 @@
 <phpunit bootstrap="vendor/autoload.php">
     <testsuites>
         <testsuite name="Crud Generator Test Suite">
-            <directory>./tests</directory>
+            <file>tests/CrudGeneratorCommandTest.php</file>
+            <file>tests/ModelCreatedTest.php</file>
+            <file>tests/RepositoryCreatedTest.php</file>
+            <file>tests/ControllerCreatedTest.php</file>
+            <file>tests/RequestCreatedTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
