@@ -5,6 +5,7 @@ namespace Suryahadiningrat\CrudGenerator;
 use Suryahadiningrat\CrudGenerator\Helpers\Response;
 use Suryahadiningrat\CrudGenerator\Helpers\ReadFile;
 use Suryahadiningrat\CrudGenerator\Helpers\WriteFile;
+use Suryahadiningrat\CrudGenerator\Helpers\WriteRoute;
 use Suryahadiningrat\CrudGenerator\Helpers\MigrationToModel;
 use Suryahadiningrat\CrudGenerator\Helpers\MigrationToRequest;
 use Suryahadiningrat\CrudGenerator\Helpers\GenerateController;
@@ -21,6 +22,7 @@ class CRUDGenerator {
      */
 
     public static function generate(string $migrationPath) {
+        $routePath = config('crud-generator.route_path');
         $modelPath = config('crud-generator.model_path');
         $requestPath = config('crud-generator.request_path');
         $resourcePath = config('crud-generator.resource_path');
@@ -50,9 +52,9 @@ class CRUDGenerator {
             WriteFile::write($requestPath, $value['fileName'], $value['content']);
         }
 
-        // Generating resource
-        $resourceContent = MigrationToResource::convertMigrationToResource($migrationContent);
-        WriteFile::write($resourcePath, $resourceContent['fileName'], $resourceContent['content']);
+        // Adding endpoint in routing
+        $writingRoute = WriteRoute::writeRoutes($modelContent['name'], $routePath);
+        dd($writingRoute);
 
         return Response::createSuccess("Sucess Generate CRUD from migration $migrationPath");
     }
