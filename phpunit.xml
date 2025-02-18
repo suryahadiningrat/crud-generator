@@ -7,6 +7,7 @@
             <file>tests/RepositoryCreatedTest.php</file>
             <file>tests/ControllerCreatedTest.php</file>
             <file>tests/RequestCreatedTest.php</file>
+            <file>tests/ResourceCreatedTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

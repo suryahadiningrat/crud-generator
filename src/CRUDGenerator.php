@@ -9,6 +9,7 @@ use Suryahadiningrat\CrudGenerator\Helpers\MigrationToModel;
 use Suryahadiningrat\CrudGenerator\Helpers\MigrationToRequest;
 use Suryahadiningrat\CrudGenerator\Helpers\GenerateController;
 use Suryahadiningrat\CrudGenerator\Helpers\GenerateRepository;
+use Suryahadiningrat\CrudGenerator\Helpers\MigrationToResource;
 use Suryahadiningrat\CrudGenerator\Helpers\MigrationToRepository;
 
 class CRUDGenerator {
@@ -22,6 +23,7 @@ class CRUDGenerator {
     public static function generate(string $migrationPath) {
         $modelPath = config('crud-generator.model_path');
         $requestPath = config('crud-generator.request_path');
+        $resourcePath = config('crud-generator.resource_path');
         $repositoryPath = config('crud-generator.repository_path');
         $controllerPath = config('crud-generator.controller_path');
 
@@ -47,6 +49,10 @@ class CRUDGenerator {
         foreach ($requestContent as $key => $value) {
             WriteFile::write($requestPath, $value['fileName'], $value['content']);
         }
+
+        // Generating resource
+        $resourceContent = MigrationToResource::convertMigrationToResource($migrationContent);
+        WriteFile::write($resourcePath, $resourceContent['fileName'], $resourceContent['content']);
 
         return Response::createSuccess("Sucess Generate CRUD from migration $migrationPath");
     }
